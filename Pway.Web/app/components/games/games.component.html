@@ -1,0 +1,276 @@
+<section class="page store offset">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 center title big-title">
+                <h1>Game store</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="!noMetamask && noAccount && !loadingEth">
+                <div class="box violet margin standard mb-3 text-left">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-danger">
+                            Please <b>unlock</b> Metamask to buy games
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="!noMetamask && wrongNetwork">
+                <div class="box violet margin standard mb-3 text-left">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-danger">
+                            Your Metamask is on Wrong network set to Mainnet
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="noMetamask && !loadingEth">
+                <div class="box violet margin standard mb-3 text-left">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-danger">
+                            Please install <a href="https://metamask.io/" target="_blank">Metamask </a> to buy games
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="balanceEmpty">
+                <div class="box violet margin standard mb-3 text-left">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 ">
+                            You need some PWay to buy our games with discount, JOIN ICO to get some, or buy (without discount) using Steam
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="loadingEth" class="col-lg-12 col-md-12 col-sm-12" style="height:200px;">
+                <ngx-loading [show]="loadingEth"></ngx-loading>
+                <label *ngIf="loadingEth" class="text-spinner">{{loadingEthText}}</label>
+            </div>
+
+            <div class="col-lg-5 col-md-5 col-sm-5" *ngIf="!noMetamask && !noAccount && !loadingEth">
+                <ngx-loading [show]="loadingApprove" [config]="{backdropBackgroundColour: 'rgba(0,0,0,0.7)'}"></ngx-loading>
+                <label *ngIf="loadingApprove" class="text-spinner">{{approveMessage}}</label>
+                <div class="box violet margin standard mb-3 text-left" style="padding:14px;margin:0px">
+                    <div class="row">
+                        <div style="font-size:14px;" class="col-lg-3 col-md-12 col-sm-3 d-flex align-items-center ">
+                            Balance
+                        </div>
+                        <div class="col-lg-9 col-md-12 col-sm-9 ">
+                            <strong style="font-size:24px;">{{pwayBalance | PwayTokenPrec}}</strong> PWAY
+                        </div>
+                    </div>
+                    <hr style="border-color:#9b9b9b;margin-bottom:10px;" />
+                    <div class="row">
+                        <div style="font-size:14px;" class="col-lg-3 col-md-12 col-sm-3 d-flex align-items-center">
+                            Your limit in STORE
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-6 ">
+                            <strong style="font-size:24px;">{{(pwayBalance.gt(allowance)? allowance : pwayBalance) | PwayTokenPrec}}</strong> PWAY
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-3 " style="padding-left:2px;" *ngIf="pwayBalance>0">
+                            <span class="btn btn-white  btn-blue" data-toggle="modal" data-target="#topupModal">
+                                Change
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7 align-self-center" *ngIf="!loadingEth">
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-white btn-blue" [routerLink]="['/slack']">
+                        Make My Game
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="wrapper">
+                    <div class="tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-white btn-white-small active" data-toggle="tab" href="#all-games">
+                                    All games
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-white btn-white-small" data-toggle="tab" href="#my-games">
+                                    My games
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane container active" id="all-games">
+                            <div class="row">
+                                <div *ngIf="loadingGames" class="col-lg-12 col-md-12 col-sm-12" style="min-height:100px;">
+                                    <ngx-loading [show]="loadingGames"></ngx-loading>
+                                </div>
+                                <div class="col-lg-4" *ngFor="let game of this.gamesList">
+                                    <div class="cellphone-container">
+                                        <div class="game-card">
+                                            <!--<div *ngIf="!game.WaitingForBuy" style="min-height:100%" class="col-lg-8 col-md-8 col-sm-8" >-->
+                                            <ngx-loading [show]="game.WaitingForBuy" [config]="{backdropBackgroundColour: 'rgba(0,0,0,0.7)'}"></ngx-loading>
+                                            <label *ngIf="game.WaitingForBuy" class="text-spinner">{{game.WaitingForBuyText}}</label>
+                                            <!--</div>-->
+                                            <img class="game-img" src="{{game.ImagePath}}" alt="Card image cap">
+                                            <div class="text-game-card-cont">
+
+                                                <div class="mr-grid">
+                                                    <div class="col1">
+                                                        <h1>{{game.Name}}</h1>
+                                                    </div>
+                                                    <div class="mr-grid">
+                                                        <div class="col1">
+                                                            <p class="game-card-description">
+                                                                {{game.ShortDescription}}
+                                                            </p>
+                                                            <small class="text-danger" *ngIf="!game.HasAnyLicence">No licence available at the moment.</small>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="noMetamask">
+
+                                                        <div class="buttons">
+                                                            <a [routerLink]="['/token']" class="btn btn-white btn-white-small  font-small">
+                                                                Buy with <b>PWAY </b>  <span style="font-size:17px;"> ($ {{game.Price | PwayTokenPrec}})</span>
+                                                                <span class="button_badge">-{{game.Discount}}%</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div style="text-align:center;padding-bottom:10px;">
+                                                            Want to SAVE money? Buy game with <a [routerLink]="['/token']"> PWAY</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="buttons" *ngIf="!noMetamask">
+                                                        <button [disabled]="!CanShowBuyButton(game)" (click)="this.buyGame(game)" class="btn btn-white btn-white-small  font-small">
+                                                            Buy with <b>PWAY </b> <span style="font-size:17px;"> ($ {{game.Price | PwayTokenPrec}})</span>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane container fade" id="my-games">
+                            <div class="box violet margin standard mb-3 " *ngIf="!noMetamask && isVerified && !noAccount">
+                                <div class="row">
+                                    It may take up to 5 minutes before Game You've bought will show here, wait and refresh the page
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="!noMetamask && !isVerified && !loadingUserGames && !loadingEth && !noAccount">
+                                <div class="col-lg-3">
+                                    <button class="nav-link btn btn-white btn-white-small" *ngIf="!isVerified" (click)="this.authenticateUser()">
+                                        Authenticate account
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="loadingUserGames||loadingEth" class="col-lg-12 col-md-12 col-sm-12" style="height:200px;">
+                                <ngx-loading [show]="loadingUserGames||loadingEth"></ngx-loading>
+                                <label class="text-spinner">{{loadingUserGamesText}}</label>
+                            </div>
+                            <div class="row" *ngIf="!noMetamask && isVerified && !loadingEth && !noAccount && !loadingUserGames ">
+                                <div class="col-lg-4" *ngFor="let game of getFilteredGameList()">
+
+                                    <div class="cellphone-container">
+
+                                        <div class="game-card">
+                                            <img class="game-img" src="{{game.ImagePath}}" alt="Card image cap">
+                                            <div class="text-game-card-cont">
+                                                <div class="mr-grid">
+                                                    <div class="col1">
+                                                        <h1>{{game.Name}}</h1>
+                                                    </div>
+
+                                                    <div class="buttons" *ngIf="isVerified" style="padding-bottom:10px;">
+                                                        <a class="btn btn-white btn-white-small btn-blue mb-3 mt-3" data-toggle="modal" data-target="#my-keys" (click)="setGame(game)">
+                                                            My keys
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal store-keys fade" id="my-keys">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">{{selectedTitle}}</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <strong>My keys</strong>
+                    </div>
+                    <div *ngIf="loadingUserKeys" class="col-lg-12 col-md-12 col-sm-12" style="height:100px;">
+                        <ngx-loading [show]="loadingUserKeys" [config]="{backdropBackgroundColour: 'rgba(0,0,0,0)'}"></ngx-loading>
+                    </div>
+                </div>
+
+                <div class="row key" *ngFor="let key of this.usersGamesKeys">
+
+                    <div class="col-lg-8">
+                        {{key.Key}}
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="float-right">
+                            <span class="btn btn-white btn-white-small btn-blue " (click)="copyMessage(key.Key)">Copy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <span class="btn btn-white btn-white-small btn-blue btn-close" (click)="clearKeys()" data-dismiss="modal" data-toggle="tab" href="#my-games">
+                    Ok
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal topup fade" id="topupModal" tabindex="-1" role="dialog" aria-labelledby="topupModal" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Chanage your Pway store account
+                <button type="button" class="close" data-dismiss="modal" (click)="closeModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-sm-10 col-form-label">Numbers of Pway</label>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" OnlyNumber="true" [(ngModel)]="amount" placeholder="eg. 100">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="this.topupWallet(amount)" class="btn btn-white btn-white-small btn-blue btn-close" data-dismiss="modal">Change</button>
+            </div>
+        </div>
+    </div>
+</div>

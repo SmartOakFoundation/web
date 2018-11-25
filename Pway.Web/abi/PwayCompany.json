@@ -1,0 +1,458 @@
+﻿[
+    {
+        "constant":  false,
+        "inputs":  [
+
+                   ],
+        "name":  "renounceOwnership",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+
+                   ],
+        "name":  "owner",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "address"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_newOwner",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "transferOwnership",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "inputs":  [
+                       {
+                           "name":  "_reg",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "governor1",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "governor2",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "governor3",
+                           "type":  "address"
+                       }
+                   ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "constructor"
+    },
+    {
+        "payable":  true,
+        "stateMutability":  "payable",
+        "type":  "fallback"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  false,
+                           "name":  "sumTried",
+                           "type":  "uint256"
+                       },
+                       {
+                           "indexed":  false,
+                           "name":  "user",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "ConfirmationNeeded",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  false,
+                           "name":  "finalCaller",
+                           "type":  "address"
+                       },
+                       {
+                           "indexed":  false,
+                           "name":  "operationValue",
+                           "type":  "uint256"
+                       },
+                       {
+                           "indexed":  false,
+                           "name":  "data",
+                           "type":  "bytes"
+                       }
+                   ],
+        "name":  "OperationProcessed",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  false,
+                           "name":  "methodAndArgs",
+                           "type":  "bytes"
+                       },
+                       {
+                           "indexed":  false,
+                           "name":  "user",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "MethodCalled",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  false,
+                           "name":  "_provider",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "ProviderQueried",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  true,
+                           "name":  "previousOwner",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "OwnershipRenounced",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  true,
+                           "name":  "previousOwner",
+                           "type":  "address"
+                       },
+                       {
+                           "indexed":  true,
+                           "name":  "newOwner",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "OwnershipTransferred",
+        "type":  "event"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "msg_data",
+                           "type":  "bytes"
+                       },
+                       {
+                           "name":  "msg_sender",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "checkIfFunctionHasBeenCalledBefore",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "bool"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_adr",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "_aliasOf",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "addAdminAlias",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_adr",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "_aliasOf",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "removeAdminAlias",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+
+                   ],
+        "name":  "getNow",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint256"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_to",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "_sum",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "transferFunds",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_to",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "_funds",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "transferTokens",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+                       {
+                           "name":  "_ethereumGameId",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "getPriceInUSD",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint256"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+                       {
+                           "name":  "_ethereumGameId",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "getPrice",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint256"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+
+                   ],
+        "name":  "withdrawFromStore",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "name":  "_gamePrice",
+                           "type":  "uint256"
+                       },
+                       {
+                           "name":  "_licenseCount",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "addGame",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "name":  "_price",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "changeGamePrice",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_price",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "changePwayRate",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "name":  "_amount",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "addLicence",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "to",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "msgData",
+                           "type":  "bytes"
+                       }
+                   ],
+        "name":  "generalCall",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_to",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "updateCompany",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    }
+]

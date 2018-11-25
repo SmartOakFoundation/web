@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="node_modules\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <None Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="package.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="contracts\deploy\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="del $(ProjectDir)build\contracts\*.json&#xD;&#xA;START /W truffle.cmd compile&#xD;&#xA;powershell.exe $(ProjectDir)shrink.ps1 -abiPath $(ProjectDir)build\contracts&#xD;&#xA;xcopy &quot;$(ProjectDir)build\contracts&quot; &quot;$(SolutionDir)Pway.Web\abi&quot; /E /Y&#xD;&#xA;" />
+  </Target>
+
+</Project>

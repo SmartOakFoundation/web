@@ -1,0 +1,18 @@
+﻿<div class="modal-container" *ngIf="isOpen">
+    <div class="modal-overlay" (click)="close(true)"></div>
+    <div class="app-modal">
+        <div class="body">
+            <div class="modal-dialog " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{modalTitle}}</h5>
+                        <button type="button" *ngIf="closebtn" (click)="close()" class="close"  aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <ng-content></ng-content>
+                </div>
+                
+            </div>
+        </div>
+</div>

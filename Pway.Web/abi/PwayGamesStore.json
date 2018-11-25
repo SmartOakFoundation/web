@@ -1,0 +1,391 @@
+﻿[
+    {
+        "constant":  false,
+        "inputs":  [
+
+                   ],
+        "name":  "renounceOwnership",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+
+                   ],
+        "name":  "owner",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "address"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+                       {
+                           "name":  "",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "gameContracts",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "address"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+
+                   ],
+        "name":  "numberOfUSDfor1000PWay",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint256"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+                       {
+                           "name":  "",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "gameIds",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint32"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_newOwner",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "transferOwnership",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "inputs":  [
+                       {
+                           "name":  "_registry",
+                           "type":  "address"
+                       }
+                   ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "constructor"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  true,
+                           "name":  "gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "indexed":  false,
+                           "name":  "gamePrice",
+                           "type":  "uint256"
+                       },
+                       {
+                           "indexed":  false,
+                           "name":  "licenseCount",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "GameCreated",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  true,
+                           "name":  "buyer",
+                           "type":  "address"
+                       },
+                       {
+                           "indexed":  true,
+                           "name":  "gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "indexed":  true,
+                           "name":  "gameLicenseId",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "GamePurchased",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  true,
+                           "name":  "previousOwner",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "OwnershipRenounced",
+        "type":  "event"
+    },
+    {
+        "anonymous":  false,
+        "inputs":  [
+                       {
+                           "indexed":  true,
+                           "name":  "previousOwner",
+                           "type":  "address"
+                       },
+                       {
+                           "indexed":  true,
+                           "name":  "newOwner",
+                           "type":  "address"
+                       }
+                   ],
+        "name":  "OwnershipTransferred",
+        "type":  "event"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "name":  "_gamePrice",
+                           "type":  "uint256"
+                       },
+                       {
+                           "name":  "_licenseCount",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "createGame",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_prices",
+                           "type":  "uint256[]"
+                       },
+                       {
+                           "name":  "_licenses",
+                           "type":  "uint32[]"
+                       }
+                   ],
+        "name":  "createGames",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+
+                   ],
+        "name":  "getRegisteredGameCount",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint32"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+                       {
+                           "name":  "_account",
+                           "type":  "address"
+                       },
+                       {
+                           "name":  "_page",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "getAccountLicences",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint64[64]"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "buyGame",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_pwayRate",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "changePwayRate",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "name":  "_price",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "changePrice",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "getPrice",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint256"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  true,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       }
+                   ],
+        "name":  "getPriceInUSD",
+        "outputs":  [
+                        {
+                            "name":  "",
+                            "type":  "uint256"
+                        }
+                    ],
+        "payable":  false,
+        "stateMutability":  "view",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+                       {
+                           "name":  "_gameId",
+                           "type":  "uint32"
+                       },
+                       {
+                           "name":  "_amount",
+                           "type":  "uint256"
+                       }
+                   ],
+        "name":  "addLicence",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    },
+    {
+        "constant":  false,
+        "inputs":  [
+
+                   ],
+        "name":  "withdraw",
+        "outputs":  [
+
+                    ],
+        "payable":  false,
+        "stateMutability":  "nonpayable",
+        "type":  "function"
+    }
+]

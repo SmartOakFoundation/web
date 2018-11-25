@@ -1,0 +1,173 @@
+
+.cellphone-container {
+  box-shadow: 0px 0px 25px 5px black;
+  border-radius: 5px;
+  background: #090F23;
+  margin-bottom:30px;
+}
+
+.game-img {
+  width: 100%;
+  z-index: 111 !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-mask-image: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 62%, rgba(9,15,35,1) 100%);
+  mask-image: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 62%, rgba(9,15,35,1) 100%);
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, black), color-stop(0.35, black), color-stop(0.5, black), color-stop(0.65, black), color-stop(0.85, rgba(0, 0, 0, 0.6)), color-stop(1, rgba(0, 0, 0, 0)));
+}
+
+.game-card {
+  z-index: 1 !important;
+  border-radius: 4px;
+}
+
+.text-game-card-cont {
+  padding: 0px 12px;
+  text-align: justify;
+  
+}
+
+.action-btn {
+  text-align: right;
+}
+.action-btn i {
+  color: #fe4141;
+  font-size: 28px;
+  text-align: right;
+}
+
+.watch-btn {
+  display: block;
+  border: 1px solid #fe4141;
+  border-radius: 5px;
+  padding: 4px;
+  width: 140px;
+}
+.watch-btn h3 i {
+  font-size: 14px;
+  margin-right: 2px;
+  position: relative;
+  float: left;
+  line-height: 1;
+}
+
+.action-row {
+  margin-top: 24px;
+}
+
+/* TYPOGRAPHY STARTS */
+/* Fonts */
+.cellphone-container h1, h2, h3, h4, h5 {
+  font-family: "Montserrat", sans-serif;
+  color: #e7e7e7;
+  margin: 0px;
+}
+
+.cellphone-container h1 {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.cellphone-container h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fe4141;
+}
+
+.cellphone-container h5 {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.game-card-description {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #9b9b9b;
+  text-align: justify;
+}
+
+
+
+.elements-distance, .game-card-details, .game-card-description, .game-card-actors {
+  margin: 0px;
+}
+
+.mr-grid {
+  width: 100%;
+}
+
+.mr-grid:before, .mr-grid:after {
+  content: "";
+  display: table;
+}
+
+.mr-grid:after {
+  clear: both;
+}
+
+.mr-grid {
+  *zoom: 1;
+}
+
+.col1, .col2, .col3, .col3rest, .col4, .col4rest, .col5, .col5rest, .col6, .col6rest {
+  margin: 0% 0.5% 0.5% 0.5%;
+  padding: 1%;
+  float: left;
+  display: block;
+}
+
+/* Columns match, minus margin sum. E.G. margin-left+margin-right=1%, col2=50%-1% - added padding:1%*/
+.col1 {
+  width: 98%;
+  padding-top:10px;
+}
+
+.col2 {
+  width: 47%;
+}
+
+.col3 {
+  width: 30.3333333333%;
+}
+
+.col4 {
+  width: 22%;
+}
+
+.col5 {
+  width: 17%;
+}
+
+.col6 {
+  width: 13.6666666667%;
+}
+
+/* Columns match with their individual number. E.G. col3+col3rest=full width row */
+.col3rest {
+  width: 63.6666666667%;
+}
+
+.col4rest {
+  width: 72%;
+}
+
+.col5rest {
+  width: 77%;
+}
+
+.col6rest {
+  width: 80.3333333333%;
+}
+
+.buttons .button_badge {
+    background-color: #fa3e3e;
+    border-radius: 6px;
+    color: white;
+    padding: 1px 3px;
+    font-size: 10px;
+    position: absolute; /* Position the badge within the relatively positioned button */
+    top: 0;
+    right: 0;
+}

@@ -1,0 +1,36 @@
+<div class="row">
+    
+    <div class="col-md-2 ml-3">
+    </div>
+    <div class="col-md-8">
+       
+        <div class="alert alert-primary" role="alert" *ngIf="noMetamask">
+            Please Use Chrome with Metamask extension.
+        </div>
+        <div *ngIf="loading" style="min-height:100px">
+            <ngx-loading [show]="loading" ></ngx-loading>
+        </div>
+        
+
+        <div *ngIf="!noMetamask && !loading">
+            <p *ngIf="this.gamesKeys.length == 0 && !loading">No licences...</p>
+            <p *ngIf="this.gamesKeys.length != 0">Owned game keys list : </p>
+            <button *ngIf="!isVerified" type="button" (click)="this.authenticateUser()" class="btn btn-primary">Authenticate Yourself</button>
+
+            <ul class="list-group" *ngIf="!noMetamask && this.isVerified">
+
+                <li class="list-group-item"
+                    *ngFor="let key of this.gamesKeys">
+                    <div class="card-body">
+                        <h5 class="card-title">{{key.name}}</h5>
+                        <p class="card-text">Activation Key:{{key.key}}</p>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
