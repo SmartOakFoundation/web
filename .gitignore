@@ -260,6 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 package-lock.json
-/Pway.Web/wwwroot/assets
-/Pway.Web/wwwroot/css
-/Pway.Web/wwwroot/img
+/SmartOak.Web/wwwroot/assets
+/SmartOak.Web/wwwroot/css
+/SmartOak.Web/wwwroot/img
